@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://b610fi67wmefl"]
+
+[ext_resource type="Texture2D" uid="uid://crkheu31yijcb" path="res://textures/kloppenheim_07_puresky_2k.hdr" id="1_v8kj3"]
+[ext_resource type="Texture2D" uid="uid://bfwedoi60fqsx" path="res://textures/metal_plate_02_rough_1k.jpg" id="4_xy4tn"]
+[ext_resource type="PackedScene" uid="uid://c30cv2kefnoev" path="res://player_controller.tscn" id="5_usj0q"]
+[ext_resource type="Script" uid="uid://1jb6t3eu52x1" path="res://scripts/player_controller.gd" id="6_crycw"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sprq5"]
+panorama = ExtResource("1_v8kj3")
+
+[sub_resource type="Sky" id="Sky_kc8kc"]
+sky_material = SubResource("PanoramaSkyMaterial_sprq5")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_ivjb3"]
+background_mode = 2
+sky = SubResource("Sky_kc8kc")
+ambient_light_source = 3
+ambient_light_energy = 1.05
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
+albedo_texture = ExtResource("4_xy4tn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8kj3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ivjb3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999789, 0.0177774, -0.0102637, -1.49013e-08, 0.499998, 0.866027, 0.0205276, -0.865844, 0.499893, 0, 8.46486, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81536, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("5_usj0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.14143, 0)
+script = ExtResource("6_crycw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_v38iq")
+size = Vector3(10, 1, 300)
+material = SubResource("StandardMaterial3D_v8kj3")

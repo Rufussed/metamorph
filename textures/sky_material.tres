@@ -1,0 +1,6 @@
+[gd_resource type="PanoramaSkyMaterial" load_steps=2 format=3 uid="uid://b5oked76np481"]
+
+[ext_resource type="Texture2D" uid="uid://crkheu31yijcb" path="res://textures/kloppenheim_07_puresky_2k.hdr" id="1_e4s37"]
+
+[resource]
+panorama = ExtResource("1_e4s37")
