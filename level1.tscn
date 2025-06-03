@@ -1,9 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://b610fi67wmefl"]
 
 [ext_resource type="Texture2D" uid="uid://crkheu31yijcb" path="res://textures/kloppenheim_07_puresky_2k.hdr" id="1_v8kj3"]
-[ext_resource type="Texture2D" uid="uid://bfwedoi60fqsx" path="res://textures/metal_plate_02_rough_1k.jpg" id="4_xy4tn"]
+[ext_resource type="Script" uid="uid://ha8i1365o4ft" path="res://scripts/camera_controller.gd" id="4_crycw"]
 [ext_resource type="PackedScene" uid="uid://c30cv2kefnoev" path="res://player_controller.tscn" id="5_usj0q"]
+[ext_resource type="Script" uid="uid://bb37exc5s37op" path="res://scripts/game_manager.gd" id="5_v8kj3"]
 [ext_resource type="Script" uid="uid://1jb6t3eu52x1" path="res://scripts/player_controller.gd" id="6_crycw"]
+[ext_resource type="PackedScene" uid="uid://dk6lx5fnq2vje" path="res://platform.tscn" id="6_i2041"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sprq5"]
 panorama = ExtResource("1_v8kj3")
@@ -14,18 +16,70 @@ radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_ivjb3"]
 background_mode = 2
+background_energy_multiplier = 1.67
 sky = SubResource("Sky_kc8kc")
 ambient_light_source = 3
-ambient_light_energy = 1.05
+ambient_light_energy = 0.0
+reflected_light_source = 2
 tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
-albedo_texture = ExtResource("4_xy4tn")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8kj3"]
+fog_enabled = true
+fog_light_color = Color(0.65962, 0.473662, 0.679139, 1)
+fog_light_energy = 0.33
+volumetric_fog_density = 0.1132
+volumetric_fog_albedo = Color(0.641664, 0.598788, 1, 1)
+volumetric_fog_emission = Color(0.630155, 0.326492, 0.257664, 1)
+volumetric_fog_emission_energy = 1024.0
+volumetric_fog_gi_inject = 16.0
+volumetric_fog_anisotropy = -0.9
+volumetric_fog_length = 0.01
+volumetric_fog_detail_spread = 6.0
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.956845, 0, 0, 0, 0.956845, 0, 0, 0, 0.956845, 12, 10, -740)
+
+[node name="platform2_2" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.31571, 114.961)
+
+[node name="platform1_1" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -12.5412, -10.9736, 167.216)
+
+[node name="platform10" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -15.5013, 10.2867, 428.463)
+
+[node name="platform9" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96008, 13.9446, 376.207)
+
+[node name="platform8" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -15.5013, 13.4506, 320.841)
+
+[node name="platform7" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96008, 17.1084, 256.274)
+
+[node name="platform5" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.42807, 475.893)
+
+[node name="platform6" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -12.5412, 1.77021, 528.148)
+
+[node name="platform3" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 585.257)
+
+[node name="platform3_1" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="platform4" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -12.5412, -4.9381, 647.963)
+
+[node name="platform4_1" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -12.5412, -4.9381, 62.7061)
+
+[node name="platform2" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.31571, 700.218)
+
+[node name="platform1" parent="Node3D" instance=ExtResource("6_i2041")]
+transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -12.5412, -10.9736, 752.473)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ivjb3")
@@ -34,15 +88,24 @@ environment = SubResource("Environment_ivjb3")
 transform = Transform3D(0.999789, 0.0177774, -0.0102637, -1.49013e-08, 0.499998, 0.866027, 0.0205276, -0.865844, 0.499893, 0, 8.46486, 0)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81536, 0)
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("5_usj0q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.14143, 0)
+[node name="player" parent="." groups=["player"] instance=ExtResource("5_usj0q")]
 script = ExtResource("6_crycw")
+min_forward_speed = 8.0
+forward_acceleration = 6.0
+jump_force = 15.0
+gravity = 22.0
+lateral_force = 80.0
+mass = 5.0
+lateral_drag = 1.0
+death_y_threshold = -50.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-material_override = SubResource("StandardMaterial3D_v38iq")
-size = Vector3(10, 1, 300)
-material = SubResource("StandardMaterial3D_v8kj3")
+[node name="Camera3D" type="Camera3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 4.41)
+far = 150.0
+script = ExtResource("4_crycw")
+
+[node name="Game Manager" type="Node" parent="." groups=["game_manager"]]
+script = ExtResource("5_v8kj3")
+
+[connection signal="player_died" from="player" to="Game Manager" method="_on_character_body_3d_player_died"]
+[connection signal="reset_player_requested" from="Game Manager" to="player" method="_on_game_manager_reset_player_requested"]
