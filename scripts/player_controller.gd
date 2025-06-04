@@ -29,6 +29,10 @@ var was_on_floor: bool = false  # Track previous floor state
 # Add signals for game events
 signal player_died
 
+# Add signals for animation control
+signal player_jumped
+signal player_landed
+
 # Add death threshold
 @export var death_y_threshold: float = -10.0  # Player dies if they fall below this Y position
 
@@ -57,6 +61,7 @@ func _physics_process(delta):
 	if on_floor_now and !was_on_floor:
 		jump_count = 0
 		is_jumping = false
+		emit_signal("player_landed")  # Emit signal when landing
 		if debug_jumps:
 			print("Landed on floor, reset jump count")
 	
@@ -138,6 +143,7 @@ func jump():
 		velocity.y = jump_force
 		is_jumping = true
 		jump_count = 1
+		emit_signal("player_jumped")  # Emit signal when jumping
 		if debug_jumps:
 			print("First jump executed, count: ", jump_count)
 	# Double jump in the air
@@ -148,6 +154,7 @@ func jump():
 		velocity.y = double_jump_force
 		jump_count = max_jumps  # Use all available jumps
 		is_jumping = true
+		emit_signal("player_jumped")  # Emit signal for double jump too
 		if debug_jumps:
 			print("Second jump executed, count: ", jump_count)
 	elif debug_jumps:

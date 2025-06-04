@@ -17,3 +17,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [global_group]
 
 player=""
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=1

@@ -1,12 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://c30cv2kefnoev"]
 
+[ext_resource type="PackedScene" uid="uid://cr1p5jggorkrc" path="res://rabbit.tscn" id="1_lvefo"]
+[ext_resource type="Script" uid="uid://cey6av002vpku" path="res://scripts/rabbit_controller.gd" id="2_f0yg5"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yv3m6"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_yv3m6"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_lvefo"]
-material = SubResource("ORMMaterial3D_yv3m6")
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 
@@ -14,5 +11,6 @@ material = SubResource("ORMMaterial3D_yv3m6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yv3m6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_lvefo")
+[node name="rabbit" parent="CollisionShape3D" instance=ExtResource("1_lvefo")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, -0.959547, 0.313654)
+script = ExtResource("2_f0yg5")

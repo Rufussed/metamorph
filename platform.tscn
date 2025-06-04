@@ -8,5 +8,6 @@ albedo_texture = ExtResource("1_mi635")
 [node name="CSGBox3D" type="CSGBox3D"]
 transform = Transform3D(0.978185, 0, 0, 0, 0.978185, 0, 0, 0, 0.978185, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_mi635")
+gi_lightmap_texel_scale = 0.01
 use_collision = true
 size = Vector3(10, 1, 50)

@@ -12,7 +12,6 @@ panorama = ExtResource("1_v8kj3")
 
 [sub_resource type="Sky" id="Sky_kc8kc"]
 sky_material = SubResource("PanoramaSkyMaterial_sprq5")
-radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_ivjb3"]
 background_mode = 2
@@ -22,7 +21,6 @@ ambient_light_source = 3
 ambient_light_energy = 0.0
 reflected_light_source = 2
 tonemap_mode = 2
-fog_enabled = true
 fog_light_color = Color(0.65962, 0.473662, 0.679139, 1)
 fog_light_energy = 0.33
 volumetric_fog_density = 0.1132
@@ -85,22 +83,24 @@ transform = Transform3D(1.0223, 0, 0, 0, 1.0223, 0, 0, 0, 1.0223, -12.5412, -10.
 environment = SubResource("Environment_ivjb3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.999789, 0.0177774, -0.0102637, -1.49013e-08, 0.499998, 0.866027, 0.0205276, -0.865844, 0.499893, 0, 8.46486, 0)
+transform = Transform3D(0.999789, 0.0177775, -0.0102638, -1.49013e-08, 0.499998, 0.866027, 0.0205276, -0.865844, 0.499893, 0, 8.46486, 4.43646)
 shadow_enabled = true
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("5_usj0q")]
 script = ExtResource("6_crycw")
+max_forward_speed = 25.0
 min_forward_speed = 8.0
 forward_acceleration = 6.0
 jump_force = 15.0
 gravity = 22.0
 lateral_force = 80.0
-mass = 5.0
+mass = 1.0
 lateral_drag = 1.0
+debug_jumps = true
 death_y_threshold = -50.0
 
 [node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 4.41)
+transform = Transform3D(1, 0, 0, 0, 0.972772, 0.231765, 0, -0.231765, 0.972772, 0, 2.15545, 2.247)
 far = 150.0
 script = ExtResource("4_crycw")
 
