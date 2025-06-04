@@ -62,8 +62,6 @@ func _physics_process(delta):
 		jump_count = 0
 		is_jumping = false
 		emit_signal("player_landed")  # Emit signal when landing
-		if debug_jumps:
-			print("Landed on floor, reset jump count")
 	
 	# Update previous floor state
 	was_on_floor = on_floor_now
@@ -129,23 +127,14 @@ func _physics_process(delta):
 	
 	# Move the character
 	move_and_slide()
-	
-	# Debug info if enabled
-	if debug_jumps and Input.is_key_pressed(KEY_SPACE):
-		print("Jump key pressed - Floor: ", on_floor_now, " Jump count: ", jump_count)
 
 func jump():
-	if debug_jumps:
-		print("Jump function called. On floor: ", is_on_floor(), " Jump count: ", jump_count)
-	
 	# First jump from the ground
 	if is_on_floor():
 		velocity.y = jump_force
 		is_jumping = true
 		jump_count = 1
 		emit_signal("player_jumped")  # Emit signal when jumping
-		if debug_jumps:
-			print("First jump executed, count: ", jump_count)
 	# Double jump in the air
 	elif double_jump_enabled and jump_count < max_jumps:
 		# Reset any downward momentum to ensure full jump height
@@ -155,10 +144,6 @@ func jump():
 		jump_count = max_jumps  # Use all available jumps
 		is_jumping = true
 		emit_signal("player_jumped")  # Emit signal for double jump too
-		if debug_jumps:
-			print("Second jump executed, count: ", jump_count)
-	elif debug_jumps:
-		print("Jump not allowed: on_floor=", is_on_floor(), " jump_count=", jump_count, " max_jumps=", max_jumps)
 
 func _input(event):
 	# Handle jump input with both Space and other possible keys
@@ -168,7 +153,6 @@ func _input(event):
 		# Toggle debug mode with F3
 		elif event.keycode == KEY_F3:
 			debug_jumps = !debug_jumps
-			print("Jump debugging: ", debug_jumps)
 
 # Add the reset method to match the signal connection in the scene
 func _on_game_manager_reset_player_requested(reset_position):

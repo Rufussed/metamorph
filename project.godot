@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="endless"
+config/name="Metamorph"
 run/main_scene="res://level1.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 

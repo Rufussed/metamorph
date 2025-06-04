@@ -100,7 +100,7 @@ debug_jumps = true
 death_y_threshold = -50.0
 
 [node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 0.972772, 0.231765, 0, -0.231765, 0.972772, 0, 2.15545, 2.247)
+transform = Transform3D(1, 0, 0, 0, 0.924739, 0.380603, 0, -0.380603, 0.924739, 0, 3.24447, 2.2783)
 far = 150.0
 script = ExtResource("4_crycw")
 
