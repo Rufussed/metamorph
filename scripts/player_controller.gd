@@ -29,9 +29,13 @@ var was_on_floor: bool = false  # Track previous floor state
 # Add signals for game events
 signal player_died
 
-# Add signals for animation control
-signal player_jumped
+# Add enhanced signals for animation control
+signal player_jumped(is_double_jump)
 signal player_landed
+
+# Animation control
+@export var animation_node_path: NodePath = "Rabbit/AnimationPlayer"
+var animation_player: AnimationPlayer = null
 
 # Add death threshold
 @export var death_y_threshold: float = -10.0  # Player dies if they fall below this Y position
@@ -49,6 +53,10 @@ func _ready():
 	# Ensure jump count starts at 0
 	jump_count = 0
 	was_on_floor = is_on_floor()
+
+	# Get the animation player if path is valid
+	if !animation_node_path.is_empty():
+		animation_player = get_node_or_null(animation_node_path)
 
 	# Make sure physics is properly initialized
 	move_and_slide()
@@ -134,7 +142,7 @@ func jump():
 		velocity.y = jump_force
 		is_jumping = true
 		jump_count = 1
-		emit_signal("player_jumped")  # Emit signal when jumping
+		emit_signal("player_jumped", false)  # Emit signal for first jump
 	# Double jump in the air
 	elif double_jump_enabled and jump_count < max_jumps:
 		# Reset any downward momentum to ensure full jump height
@@ -143,7 +151,7 @@ func jump():
 		velocity.y = double_jump_force
 		jump_count = max_jumps  # Use all available jumps
 		is_jumping = true
-		emit_signal("player_jumped")  # Emit signal for double jump too
+		emit_signal("player_jumped", true)  # Emit signal for double jump
 
 func _input(event):
 	# Handle jump input with both Space and other possible keys
