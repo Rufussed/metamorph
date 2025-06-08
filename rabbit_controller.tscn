@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c30cv2kefnoev"]
+[gd_scene load_steps=4 format=3 uid="uid://c30cv2kefnoev"]
 
+[ext_resource type="Script" uid="uid://cey6av002vpku" path="res://scripts/rabbit_controller.gd" id="1_3rsba"]
 [ext_resource type="PackedScene" uid="uid://cupcup5unvgmt" path="res://rabbit.tscn" id="1_lvefo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yv3m6"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="RabbitController" type="CharacterBody3D"]
+script = ExtResource("1_3rsba")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yv3m6")
 
 [node name="rabbit" parent="." instance=ExtResource("1_lvefo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00561106, -0.0758004, 0.212888)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00561106, 0.0472157, 0.212888)

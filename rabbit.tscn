@@ -20,7 +20,7 @@ bones/9/rotation = Quaternion(-0.614781, 0.120408, -0.251444, 0.737782)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hop"
-speed_scale = 1.505
+speed_scale = 2.0
 
 [node name="AnimationController" type="Node" parent="." index="2"]
 script = ExtResource("2_msxim")

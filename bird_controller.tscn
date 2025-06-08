@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://l4nqp2oi1urj"]
+
+[ext_resource type="Script" uid="uid://bx006u1y4mld2" path="res://scripts/bird_controller.gd" id="1_thrha"]
+[ext_resource type="PackedScene" uid="uid://dhklfg7e5uykf" path="res://crane.tscn" id="1_uk6cm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_thrha"]
+
+[node name="BirdController" type="CharacterBody3D"]
+script = ExtResource("1_thrha")
+bird_gravity_scale = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-7.64949e-08, -1.75, 0, 1.75, -7.64949e-08, 0, 0, 0, 1.75, 0, 0.493215, -0.0946484)
+shape = SubResource("CapsuleShape3D_thrha")
+
+[node name="crane2" parent="." instance=ExtResource("1_uk6cm")]
+transform = Transform3D(-1.53976, 0, -0.0273603, 0, 1.54, 0, 0.0273603, 0, -1.53976, -0.0103729, 0.149112, -0.164552)
