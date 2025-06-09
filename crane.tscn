@@ -11,14 +11,14 @@ visible = false
 visible = false
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(4.54199e-08, -0.0775579, -0.238152)
-bones/1/rotation = Quaternion(-0.307572, -3.08408e-07, -4.81674e-07, 0.951525)
-bones/2/rotation = Quaternion(0.716247, -4.1438e-12, 8.99373e-07, 0.697847)
-bones/3/rotation = Quaternion(-0.561304, -0.325403, -0.411249, 0.640254)
-bones/4/rotation = Quaternion(-0.144627, 0.0996414, -0.570471, 0.80232)
-bones/5/rotation = Quaternion(-0.573408, 0.303331, 0.38604, 0.655872)
-bones/6/rotation = Quaternion(-0.145623, -0.0988365, 0.561804, 0.808333)
-bones/7/rotation = Quaternion(0.950414, 2.96586e-07, 9.06401e-07, -0.310987)
+bones/0/position = Vector3(1.19151e-08, -0.0602546, -0.241178)
+bones/1/rotation = Quaternion(-0.304335, -3.10142e-07, -4.80591e-07, 0.952565)
+bones/2/rotation = Quaternion(0.712518, -4.20508e-12, 8.94691e-07, 0.701654)
+bones/3/rotation = Quaternion(-0.527966, -0.373673, -0.469619, 0.600898)
+bones/4/rotation = Quaternion(-0.153431, 0.0926023, -0.484506, 0.856234)
+bones/5/rotation = Quaternion(-0.540195, 0.355739, 0.449181, 0.61634)
+bones/6/rotation = Quaternion(-0.154208, -0.0914105, 0.476249, 0.860843)
+bones/7/rotation = Quaternion(0.950987, 2.94912e-07, 9.06947e-07, -0.309232)
 
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = "flap"

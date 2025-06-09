@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfaove87v8cqp"]
+
+[ext_resource type="PackedScene" uid="uid://tsqrpjudtrri" path="res://blender/bonsai.blend" id="1_ymano"]
+
+[node name="bonsai" instance=ExtResource("1_ymano")]

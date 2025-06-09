@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvantpc1a1vea"]
+
+[ext_resource type="PackedScene" uid="uid://re421d038m3f" path="res://blender/archway.blend" id="1_8hwpf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8hwpf"]
+size = Vector3(0.438538, 2.62903, 0.487305)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7022"]
+size = Vector3(0.386322, 1.12878, 2.31885)
+
+[node name="archway" instance=ExtResource("1_8hwpf")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0308533, 1.27317, 0.974964)
+shape = SubResource("BoxShape3D_8hwpf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0308533, 1.27317, -0.950663)
+shape = SubResource("BoxShape3D_8hwpf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0179291, 3.054, -0.0306228)
+shape = SubResource("BoxShape3D_w7022")

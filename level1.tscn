@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b610fi67wmefl"]
+[gd_scene load_steps=12 format=3 uid="uid://b610fi67wmefl"]
 
 [ext_resource type="Texture2D" uid="uid://crkheu31yijcb" path="res://textures/kloppenheim_07_puresky_2k.hdr" id="1_v8kj3"]
 [ext_resource type="Script" uid="uid://ha8i1365o4ft" path="res://scripts/camera_controller.gd" id="4_crycw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bb37exc5s37op" path="res://scripts/game_manager.gd" id="5_v8kj3"]
 [ext_resource type="PackedScene" uid="uid://dk6lx5fnq2vje" path="res://platform.tscn" id="6_i2041"]
 [ext_resource type="PackedScene" uid="uid://l4nqp2oi1urj" path="res://bird_controller.tscn" id="7_2h4xc"]
+[ext_resource type="PackedScene" uid="uid://dfaove87v8cqp" path="res://bonsai.tscn" id="8_xy4tn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sprq5"]
 panorama = ExtResource("1_v8kj3")
@@ -22,8 +23,12 @@ ambient_light_source = 3
 ambient_light_energy = 0.0
 reflected_light_source = 2
 tonemap_mode = 2
-fog_light_color = Color(0.65962, 0.473662, 0.679139, 1)
-fog_light_energy = 0.33
+fog_enabled = true
+fog_light_color = Color(0.476801, 0.55748, 0.664296, 1)
+fog_sky_affect = 0.411
+fog_height = -1024.0
+fog_depth_curve = 3.86374
+fog_depth_begin = -20.0
 volumetric_fog_density = 0.1132
 volumetric_fog_albedo = Color(0.641664, 0.598788, 1, 1)
 volumetric_fog_emission = Color(0.630155, 0.326492, 0.257664, 1)
@@ -114,13 +119,16 @@ bird_controller_path = NodePath("../BirdController")
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.924739, 0.380603, 0, -0.380603, 0.924739, 0, 3.24447, 2.2783)
 current = true
-far = 150.0
+far = 1500.0
 script = ExtResource("4_crycw")
 transition_speed = 8.0
 follow_offset = Vector3(0, 1.5, 3)
 follow_distance = 1.0
 bird_follow_distance = 1.0
 height_offset = 2.5
+
+[node name="bonsai" parent="." instance=ExtResource("8_xy4tn")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, -8.11338, -85.1918, -466.978)
 
 [connection signal="player_died" from="RabbitController" to="Game Manager" method="_on_character_body_3d_player_died"]
 [connection signal="player_died" from="BirdController" to="Game Manager" method="_on_character_body_3d_player_died"]

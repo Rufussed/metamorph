@@ -6,17 +6,17 @@
 [node name="rabbit" instance=ExtResource("1_eqa7p")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 1.95827, -5.94765e-08)
-bones/0/rotation = Quaternion(-0.157007, 0, 0, 0.987598)
-bones/1/rotation = Quaternion(-0.516301, 0, 0, 0.856407)
-bones/2/rotation = Quaternion(0.4431, -0.236792, 0.441221, 0.743583)
-bones/3/rotation = Quaternion(-0.164755, -0.0492223, 0.359521, 0.917157)
-bones/4/rotation = Quaternion(0.461168, 0.205604, -0.414287, 0.757243)
-bones/5/rotation = Quaternion(-0.159196, 0.0460101, -0.343267, 0.924504)
-bones/6/rotation = Quaternion(-0.723752, 0.111739, 0.113959, 0.67135)
-bones/7/rotation = Quaternion(-0.698745, -0.130588, -0.0958119, 0.696794)
-bones/8/rotation = Quaternion(-0.43448, -0.217853, 0.403379, 0.775276)
-bones/9/rotation = Quaternion(-0.357099, 0.32384, -0.44116, 0.756958)
+bones/0/position = Vector3(0, 1.10898, 9.49182e-08)
+bones/0/rotation = Quaternion(-0.262764, 0, 0, 0.96486)
+bones/1/rotation = Quaternion(-0.412324, 0, 0, 0.911037)
+bones/2/rotation = Quaternion(0.504376, -0.120159, 0.337929, 0.785474)
+bones/3/rotation = Quaternion(-0.112766, -0.0197774, 0.209103, 0.971169)
+bones/4/rotation = Quaternion(0.510149, 0.107228, -0.32606, 0.788628)
+bones/5/rotation = Quaternion(-0.11038, 0.0184558, -0.202279, 0.972913)
+bones/6/rotation = Quaternion(-0.58749, 0.10323, 0.0678705, 0.799746)
+bones/7/rotation = Quaternion(-0.565114, -0.0310908, -0.119569, 0.81571)
+bones/8/rotation = Quaternion(-0.508884, -0.169471, 0.303835, 0.787401)
+bones/9/rotation = Quaternion(-0.525015, 0.201868, -0.329845, 0.758163)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hop"
