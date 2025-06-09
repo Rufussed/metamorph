@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://crkheu31yijcb" path="res://textures/kloppenheim_07_puresky_2k.hdr" id="1_v8kj3"]
 [ext_resource type="Script" uid="uid://ha8i1365o4ft" path="res://scripts/camera_controller.gd" id="4_crycw"]
+[ext_resource type="Script" uid="uid://b5bhabkrmcpij" path="res://scripts/rabbit_controller.gd" id="4_i2041"]
 [ext_resource type="PackedScene" uid="uid://c30cv2kefnoev" path="res://rabbit_controller.tscn" id="5_usj0q"]
 [ext_resource type="Script" uid="uid://bb37exc5s37op" path="res://scripts/game_manager.gd" id="5_v8kj3"]
-[ext_resource type="Script" uid="uid://1jb6t3eu52x1" path="res://scripts/player_controller.gd" id="6_crycw"]
 [ext_resource type="PackedScene" uid="uid://dk6lx5fnq2vje" path="res://platform.tscn" id="6_i2041"]
 [ext_resource type="PackedScene" uid="uid://l4nqp2oi1urj" path="res://bird_controller.tscn" id="7_2h4xc"]
 
@@ -88,30 +88,21 @@ transform = Transform3D(0.999789, 0.0177775, -0.0102638, -1.49013e-08, 0.499998,
 shadow_enabled = true
 
 [node name="RabbitController" parent="." groups=["player"] instance=ExtResource("5_usj0q")]
-script = ExtResource("6_crycw")
-initial_forward_speed = 0.0
+script = ExtResource("4_i2041")
 max_forward_speed = 25.0
 min_forward_speed = 8.0
 forward_acceleration = 6.0
-boost_acceleration = 8.0
-deceleration = 8.0
 jump_force = 15.0
 gravity = 22.0
 lateral_force = 80.0
 mass = 1.0
 lateral_drag = 1.0
-max_lateral_speed = 8.0
-double_jump_enabled = true
-double_jump_force = 10.0
 debug_jumps = true
 animation_node_path = NodePath("Rabbit/AnimationPlayer")
 death_y_threshold = -50.0
-reset_z_threshold = -560.0
 
 [node name="BirdController" parent="." instance=ExtResource("7_2h4xc")]
 visible = false
-flight_speed = 30.0
-max_lateral_speed = 5.0
 
 [node name="Game Manager" type="Node" parent="." groups=["game_manager"]]
 script = ExtResource("5_v8kj3")
@@ -125,7 +116,7 @@ far = 150.0
 script = ExtResource("4_crycw")
 transition_speed = 8.0
 follow_offset = Vector3(0, 1.5, 3)
-follow_distance = 2.0
+follow_distance = 1.0
 bird_follow_distance = 1.0
 height_offset = 2.5
 

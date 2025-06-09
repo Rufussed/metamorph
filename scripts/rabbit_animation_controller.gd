@@ -8,6 +8,7 @@ extends Node
 @export var hop_animation: String = "hop"
 @export var jump_pause_frame: float = 0.4  # Point in animation to pause at (0-1)
 @export var double_jump_speed_factor: float = 2.0  # Animation speed multiplier for double jumps
+@export var animation_speed_factor: float = 1.0  # General animation speed factor
 
 # State tracking
 var is_jumping: bool = false
@@ -21,6 +22,7 @@ func _ready():
 	# Start with the hop animation looping
 	if animation_player:
 		animation_player.play(hop_animation)
+		animation_player.speed_scale = animation_speed_factor
 		animation_player.set_active(true)
 
 func _on_player_jumped(is_double_jump = false):
@@ -34,8 +36,8 @@ func _on_player_jumped(is_double_jump = false):
 			var anim_length = animation_player.current_animation_length
 			var start_position = anim_length * jump_pause_frame
 			
-			# Set playback speed to the configurable factor
-			animation_player.speed_scale = double_jump_speed_factor
+			# Set playback speed to the configurable factor (with general factor applied)
+			animation_player.speed_scale = double_jump_speed_factor * animation_speed_factor
 			
 			# Start from the pause point (0.4)
 			animation_player.seek(start_position)
@@ -57,7 +59,7 @@ func _on_player_jumped(is_double_jump = false):
 			# Normal jump: play from beginning at normal speed
 			animation_player.play(hop_animation)
 			animation_player.seek(0.0)
-			animation_player.speed_scale = 1.0
+			animation_player.speed_scale = animation_speed_factor
 			
 			# Calculate the time to pause at
 			var anim_length = animation_player.current_animation_length
@@ -83,6 +85,6 @@ func _on_player_landed():
 	
 	if animation_player:
 		# Resume playing the animation from its current position
-		# and reset speed to normal
-		animation_player.speed_scale = 1.0
+		# and reset speed to normal (with factor applied)
+		animation_player.speed_scale = animation_speed_factor
 		animation_player.play()
