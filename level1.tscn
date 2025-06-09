@@ -32,6 +32,8 @@ volumetric_fog_gi_inject = 16.0
 volumetric_fog_anisotropy = -0.9
 volumetric_fog_length = 0.01
 volumetric_fog_detail_spread = 6.0
+adjustment_brightness = 1.05
+adjustment_contrast = 1.1
 
 [node name="Node3D" type="Node3D"]
 
