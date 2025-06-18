@@ -8,6 +8,7 @@ extends Node
 @export var fly_animation: String = "fly"
 @export var flap_animation: String = "flap"
 @export var dive_animation: String = "dive"
+@export var drift_animation: String = "drift"
 
 # State tracking
 var is_diving: bool = false
@@ -19,28 +20,33 @@ func _ready():
 		bird_controller.bird_flapped.connect(_on_bird_flapped)
 		bird_controller.bird_dived.connect(_on_bird_dived)
 	
-	# Start with the fly animation looping
+	# Start with the drift animation by default
 	if animation_player:
-		animation_player.play(fly_animation)
+		animation_player.play(drift_animation)
 		animation_player.set_active(true)
 
 func _on_bird_flapped():
-	if animation_player and !is_diving:
-		animation_player.play(flap_animation)
+	# If not already flapping, play the flap animation once
+	if animation_player and !is_flapping:
 		is_flapping = true
 		
-		# Return to fly animation after flap completes
+		# Stop current animation and play the flap animation
+		animation_player.stop()
+		animation_player.play(flap_animation)
+		
+		# After flap animation finishes, go back to drift
 		await animation_player.animation_finished
-		if !is_diving:
-			animation_player.play(fly_animation)
-			is_flapping = false
+		
+		# Resume the drift animation and reset state
+		animation_player.play(drift_animation)
+		is_flapping = false
 
 func _on_bird_dived():
 	if animation_player and !is_flapping:
 		animation_player.play(dive_animation)
 		is_diving = true
 		
-		# Return to fly animation after dive completes
+		# Return to drift animation after dive completes
 		await animation_player.animation_finished
-		animation_player.play(fly_animation)
+		animation_player.play(drift_animation)
 		is_diving = false

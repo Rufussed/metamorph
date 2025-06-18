@@ -22,6 +22,7 @@ var was_on_floor: bool = false
 # Add signals for game events
 signal player_died
 signal bird_flapped
+signal bird_dived  # Add the missing signal
 
 # Add death threshold
 @export var death_y_threshold: float = -50.0
@@ -79,9 +80,13 @@ func _physics_process(delta):
 	# Apply gravity
 	velocity.y -= gravity * delta
 	
-	# Check for spacebar flapping - FIXED: use is_action_just_pressed instead
+	# Check for spacebar flapping
 	if Input.is_action_just_pressed("ui_accept"):
 		flap()
+	
+	# Add check for dive input (e.g., using Shift key)
+	if Input.is_action_just_pressed("ui_cancel") or Input.is_key_pressed(KEY_SHIFT):
+		dive()
 	
 	# Check death and reset conditions
 	if global_position.y < death_y_threshold:
@@ -97,7 +102,24 @@ func flap():
 	# Bird can flap anytime (no floor check)
 	velocity.y = flap_force
 	is_jumping = true
+	
+	# Emit the signal to trigger animation
 	emit_signal("bird_flapped")
+	
+	# Print debug message
+	print("Bird flapped!")
+
+# Add a new dive function
+func dive():
+	# Implement diving behavior
+	velocity.y = -flap_force * 1.5  # Dive down with more force than flapping
+	is_jumping = false
+	
+	# Emit the signal to trigger animation
+	emit_signal("bird_dived")
+	
+	# Print debug message
+	print("Bird dived!")
 
 func _on_game_manager_reset_player_requested(reset_position):
 	global_position = reset_position
